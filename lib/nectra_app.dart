@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nectar/app/presentation/controller/app_cubit.dart';
+import 'package:nectar/app/presentation/screens/on_boarding_screen.dart';
 import 'package:nectar/authentication/presentation/controller/authentication_cubit.dart';
+import 'package:nectar/authentication/presentation/screens/login_screen.dart';
 import 'package:nectar/cart/presentation/controller/cart_cubit.dart';
+import 'package:nectar/core/localization/app_localizations_setup.dart';
 import 'package:nectar/core/services/service_locator.dart';
+import 'package:nectar/core/themes/app_themes/dark_theme.dart';
+import 'package:nectar/core/themes/app_themes/light_theme.dart';
 import 'package:nectar/store/presentation/controller/store_cubit.dart';
 import 'package:nectar/user/presentation/controller/user_cubit.dart';
 
@@ -18,7 +23,10 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       child: MultiBlocProvider(
         providers: [
-          BlocProvider(create: (context) => sl<AppCubit>()),
+          BlocProvider(
+              create: (context) => sl<AppCubit>()
+                ..getOnBoarding()
+                ..getTheme()),
           BlocProvider(create: (context) => sl<AuthenticationCubit>()),
           BlocProvider(create: (context) => sl<CartCubit>()),
           BlocProvider(create: (context) => sl<StoreCubit>()),
@@ -26,17 +34,22 @@ class MyApp extends StatelessWidget {
         ],
         child: BlocBuilder<AppCubit, AppState>(
           builder: (context, state) {
+            final appCubit = AppCubit.get(context);
             return MaterialApp(
               debugShowCheckedModeBanner: false,
               title: 'Material App',
-              home: Scaffold(
-                appBar: AppBar(
-                  title: const Text('Material App Bar'),
-                ),
-                body: const Center(
-                  child: Text('Hello World'),
-                ),
-              ),
+              theme: lightTheme,
+              localizationsDelegates:
+                  AppLocalizationsSetup.localizationsDelegates,
+              supportedLocales: AppLocalizationsSetup.supportedLocales,
+              localeResolutionCallback:
+                  AppLocalizationsSetup.localeResolutionCallBack,
+              locale: const Locale("en", ''),
+              darkTheme: darkTheme,
+              themeMode: appCubit.isDark ? ThemeMode.dark : ThemeMode.light,
+              home: appCubit.isGoToOnBoarding
+                  ? const OnBoardingScreen()
+                  : const LoginScreen(),
             );
           },
         ),
