@@ -1,5 +1,16 @@
 {
     "WelcomeToOurStore": "Welcome\nto our store",
     "GetGroceries": "Get your groceries in as fast as one hour",
-    "GetStarted": "Get Started"
+    "GetStarted": "Get Started",
+    "Login": "Login",
+    "EnterEmailAndPassword": "Enter your Email and Password",
+    "EnterYourEmail": "Enter your Email",
+    "EmailMustNotBeEmpty": "Email is required",
+    "Email": "Email",
+    "Password": "Password",
+    "EnterYourPassword": "Enter your password",
+    "PasswordMustNotBeEmpty": "Password is required",
+    "ForgotPassword": "Forgot Password?",
+    "DonotHaveAccount": "Don't have an account? ",
+    "SignUp": "SignUp"
 }

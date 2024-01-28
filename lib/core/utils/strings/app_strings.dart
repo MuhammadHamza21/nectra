@@ -10,4 +10,26 @@ class AppStrings {
       getLangFromJson(context: context, text: "GetGroceries");
   static String getStarted(BuildContext context) =>
       getLangFromJson(context: context, text: "GetStarted");
+  static String login(BuildContext context) =>
+      getLangFromJson(context: context, text: "Login");
+  static String enterEmailAndPassword(BuildContext context) =>
+      getLangFromJson(context: context, text: "EnterEmailAndPassword");
+  static String enterYourEmail(BuildContext context) =>
+      getLangFromJson(context: context, text: "EnterYourEmail");
+  static String emailMustNotBeEmpty(BuildContext context) =>
+      getLangFromJson(context: context, text: "EmailMustNotBeEmpty");
+  static String password(BuildContext context) =>
+      getLangFromJson(context: context, text: "Password");
+  static String enterYourPassword(BuildContext context) =>
+      getLangFromJson(context: context, text: "EnterYourPassword");
+  static String passwordMustNotBeEmpty(BuildContext context) =>
+      getLangFromJson(context: context, text: "PasswordMustNotBeEmpty");
+  static String forgotPassword(BuildContext context) =>
+      getLangFromJson(context: context, text: "ForgotPassword");
+  static String donotHaveAccount(BuildContext context) =>
+      getLangFromJson(context: context, text: "DonotHaveAccount");
+  static String signUp(BuildContext context) =>
+      getLangFromJson(context: context, text: "SignUp");
+  static String email(BuildContext context) =>
+      getLangFromJson(context: context, text: "Email");
 }

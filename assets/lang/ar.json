@@ -1,5 +1,16 @@
 {
     "WelcomeToOurStore": "مرحبا\nبك في متجرنا",
     "GetGroceries": "احصل على مشترياتك من البقالة في اسرع وقت ممكن",
-    "GetStarted": "البدء"
+    "GetStarted": "البدء",
+    "Login": "تسجيل الدخول",
+    "EnterEmailAndPassword": "ادخل البريد الالكتروني وكلمة المرور",
+    "EnterYourEmail": "ادخل البريد الالكتروني",
+    "EmailMustNotBeEmpty": "يجب ادخال البريد الالكتروني",
+    "Password": "كلمة المرور",
+    "EnterYourPassword": "ادخل كلمة المرور",
+    "PasswordMustNotBeEmpty": "يجب ادخال كلمة المرور",
+    "ForgotPassword": "نسيت كلمة المرور ؟",
+    "DonotHaveAccount": " ليس لديك حساب ؟",
+    "SignUp": "انشاء حساب",
+    "Email": "البريد الالكتروني"
 }

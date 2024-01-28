@@ -8,8 +8,8 @@ import 'package:nectar/authentication/presentation/screens/login_screen.dart';
 import 'package:nectar/cart/presentation/controller/cart_cubit.dart';
 import 'package:nectar/core/localization/app_localizations_setup.dart';
 import 'package:nectar/core/services/service_locator.dart';
-import 'package:nectar/core/themes/app_themes/dark_theme.dart';
-import 'package:nectar/core/themes/app_themes/light_theme.dart';
+import 'package:nectar/core/themes/theme_data/dark_theme.dart';
+import 'package:nectar/core/themes/theme_data/light_theme.dart';
 import 'package:nectar/store/presentation/controller/store_cubit.dart';
 import 'package:nectar/user/presentation/controller/user_cubit.dart';
 
@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
               themeMode: appCubit.isDark ? ThemeMode.dark : ThemeMode.light,
               home: appCubit.isGoToOnBoarding
                   ? const OnBoardingScreen()
-                  : const LoginScreen(),
+                  : LoginScreen(),
             );
           },
         ),
