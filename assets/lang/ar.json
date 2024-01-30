@@ -12,5 +12,18 @@
     "ForgotPassword": "نسيت كلمة المرور ؟",
     "DonotHaveAccount": " ليس لديك حساب ؟",
     "SignUp": "انشاء حساب",
-    "Email": "البريد الالكتروني"
+    "Email": "البريد الالكتروني",
+    "ConnectWithSocialMedia": "تسجيل الدخول بوسائل التواصل الاجتماعي",
+    "EnterYourCredentials": "ادخل بيانات الحساب للاستمرار",
+    "Username": "اسم المستخدم",
+    "EnterYourUsername": "ادخل اسم المستخدم",
+    "UsernameMustNotBeEmpty": "يجب ادخال اسم المستخدم",
+    "ByContinueYouAgree": "بالاستمرار انت توافق على ",
+    "TermsAndService": "الشروط والخدمات ",
+    "And": "و ",
+    "PrivacyPolicy": "سياسة الخصوصية.",
+    "AlreadyHaveAnAccount": "لديك حساب بالفعل؟ ",
+    "SignIn": "تسجيل الدخول",
+    "EnterYourMobileNumber": "ادخل رقم الهاتف",
+    "EnterYourMobile": "ادخل رقمك"
 }

@@ -68,4 +68,11 @@ class TextStyles {
     fontWeight: AppFontWeights.semiBold,
     fontFamily: "Gilroy",
   );
+
+  static TextStyle font16GreenMediumGilroy = TextStyle(
+    fontSize: 16.sp,
+    color: AppColors.primaryColor,
+    fontWeight: AppFontWeights.medium,
+    fontFamily: "Gilroy",
+  );
 }

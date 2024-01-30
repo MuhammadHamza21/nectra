@@ -47,9 +47,10 @@ class MyApp extends StatelessWidget {
               locale: const Locale("en", ''),
               darkTheme: darkTheme,
               themeMode: appCubit.isDark ? ThemeMode.dark : ThemeMode.light,
+              // themeMode: ThemeMode.dark,
               home: appCubit.isGoToOnBoarding
                   ? const OnBoardingScreen()
-                  : LoginScreen(),
+                  : const LoginScreen(),
             );
           },
         ),

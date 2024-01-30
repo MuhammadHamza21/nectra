@@ -12,5 +12,18 @@
     "PasswordMustNotBeEmpty": "Password is required",
     "ForgotPassword": "Forgot Password?",
     "DonotHaveAccount": "Don't have an account? ",
-    "SignUp": "SignUp"
+    "SignUp": "Sign Up",
+    "ConnectWithSocialMedia": "Or connect with social media",
+    "EnterYourCredentials": "Enter your credentials to continue",
+    "Username": "Username",
+    "EnterYourUsername": "Enter your username",
+    "UsernameMustNotBeEmpty": "Username is required",
+    "ByContinueYouAgree": "By continuing you agree to our ",
+    "TermsAndService": "Terms and Service ",
+    "And": "and ",
+    "PrivacyPolicy": "Privacy Policy.",
+    "AlreadyHaveAnAccount": "Already have an account? ",
+    "SignIn": "Sign In",
+    "EnterYourMobileNumber": "Enter your mobile number",
+    "EnterYourMobile": "Enter your mobile"
 }

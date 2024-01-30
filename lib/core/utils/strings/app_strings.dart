@@ -32,4 +32,30 @@ class AppStrings {
       getLangFromJson(context: context, text: "SignUp");
   static String email(BuildContext context) =>
       getLangFromJson(context: context, text: "Email");
+  static String connectWithSocialMedia(BuildContext context) =>
+      getLangFromJson(context: context, text: "ConnectWithSocialMedia");
+  static String enterYourCredentials(BuildContext context) =>
+      getLangFromJson(context: context, text: "EnterYourCredentials");
+  static String username(BuildContext context) =>
+      getLangFromJson(context: context, text: "Username");
+  static String enterYourUsername(BuildContext context) =>
+      getLangFromJson(context: context, text: "EnterYourUsername");
+  static String usernameMustNotBeEmpty(BuildContext context) =>
+      getLangFromJson(context: context, text: "UsernameMustNotBeEmpty");
+  static String byContinueYouAgree(BuildContext context) =>
+      getLangFromJson(context: context, text: "ByContinueYouAgree");
+  static String termsAndService(BuildContext context) =>
+      getLangFromJson(context: context, text: "TermsAndService");
+  static String and(BuildContext context) =>
+      getLangFromJson(context: context, text: "And");
+  static String privacyPolicy(BuildContext context) =>
+      getLangFromJson(context: context, text: "PrivacyPolicy");
+  static String alreadyHaveAnAccount(BuildContext context) =>
+      getLangFromJson(context: context, text: "AlreadyHaveAnAccount");
+  static String signIn(BuildContext context) =>
+      getLangFromJson(context: context, text: "SignIn");
+  static String enterYourMobileNumber(BuildContext context) =>
+      getLangFromJson(context: context, text: "EnterYourMobileNumber");
+  static String enterYourMobile(BuildContext context) =>
+      getLangFromJson(context: context, text: "EnterYourMobile");
 }
