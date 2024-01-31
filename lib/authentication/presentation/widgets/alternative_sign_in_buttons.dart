@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:nectar/authentication/presentation/widgets/alternative_sign_in_button.dart';
 import 'package:nectar/core/widgets/spacing.dart';
+import 'package:ionicons/ionicons.dart';
 
 class AlternativeSignInButtons extends StatelessWidget {
   const AlternativeSignInButtons({
@@ -15,12 +16,14 @@ class AlternativeSignInButtons extends StatelessWidget {
       children: [
         AlternativeSignInButton(
           onPressed: () {},
-          image: "google",
+          icon: Ionicons.logo_google,
+          iconColor: Colors.red,
         ),
         horizontalSpacing(25),
         AlternativeSignInButton(
           onPressed: () {},
-          image: "facebook",
+          icon: Ionicons.logo_facebook,
+          iconColor: Colors.blue,
         ),
       ],
     );

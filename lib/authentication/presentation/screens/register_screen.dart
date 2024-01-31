@@ -1,15 +1,18 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:nectar/authentication/presentation/screens/mobile_number_screen.dart';
+import 'package:nectar/authentication/domain/usecases/create_user_with_email_and_password.dart';
+import 'package:nectar/authentication/presentation/controller/authentication_cubit.dart';
 import 'package:nectar/authentication/presentation/widgets/already_have_an_account_text.dart';
 import 'package:nectar/authentication/presentation/widgets/terms_and_condition_widget.dart';
-import 'package:nectar/core/utils/navigations/navigate_to.dart';
 import 'package:nectar/core/utils/strings/app_strings.dart';
 import 'package:nectar/core/utils/text_styles/text_styles.dart';
 import 'package:nectar/core/widgets/app_text_button.dart';
 import 'package:nectar/core/widgets/app_text_form_field.dart';
+import 'package:nectar/core/widgets/circular_progress_indicator_widget.dart';
+import 'package:nectar/core/widgets/snackbar_message.dart';
 import 'package:nectar/core/widgets/spacing.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -122,15 +125,43 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   verticalSpacing(20),
                   const TermsAndConditionsWidget(),
                   verticalSpacing(30),
-                  AppTextButton(
-                    onPressed: () {
-                      // if (formKey.currentState!.validate()) {}
-                      navigateTo(
-                        context,
-                        const MobileNumberScreen(),
-                      );
+                  BlocConsumer<AuthenticationCubit, AuthenticationState>(
+                    builder: (context, state) {
+                      final authCubit = AuthenticationCubit.get(context);
+                      if (state is CreateUserWithEmailAndPasswordLoadingState) {
+                        return const CircularProgressIndicatorWidget();
+                      } else {
+                        return AppTextButton(
+                          onPressed: () {
+                            if (formKey.currentState!.validate()) {
+                              FocusManager.instance.primaryFocus!.unfocus();
+                              authCubit.createUserWithEmailAndPassword(
+                                CreateUserParams(
+                                  userName: usernameController.text,
+                                  email: emailController.text,
+                                  password: passwordController.text,
+                                ),
+                              );
+                            }
+                          },
+                          title: AppStrings.signUp(context),
+                        );
+                      }
                     },
-                    title: AppStrings.signUp(context),
+                    listener: (context, state) {
+                      final authCubit = AuthenticationCubit.get(context);
+                      if (state is CreateUserWithEmailAndPasswordOfflineState ||
+                          state is CreateUserWithEmailAndPasswordErrorState) {
+                        SnackbarMessage.showErrorMessage(
+                            context, authCubit.userCredentialsMessage);
+                      } else if (state
+                          is CreateUserWithEmailAndPasswordSuccessState) {
+                        SnackbarMessage.showSuccessMessage(
+                          context,
+                          "User Created Successfully",
+                        );
+                      }
+                    },
                   ),
                   verticalSpacing(25),
                   const AlreadyHaveAnAccountText(),

@@ -12,7 +12,20 @@
           "package_name": "nectar.eg.eg.nectar"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "267604482741-vqu8uslfjq8o7ssl0md1ae5s5o8fi9mm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "nectar.eg.eg.nectar",
+            "certificate_hash": "eb86416f476db5592ec704962a1de8f1eca39cc6"
+          }
+        },
+        {
+          "client_id": "267604482741-2u3lm7nrovtnl479kjuiod7h6ng4phnu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyA1_iI-TgDOmcONw6h_PMXKFC__8vpamXM"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "267604482741-2u3lm7nrovtnl479kjuiod7h6ng4phnu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

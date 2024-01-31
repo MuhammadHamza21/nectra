@@ -27,7 +27,8 @@ class MyApp extends StatelessWidget {
               create: (context) => sl<AppCubit>()
                 ..getOnBoarding()
                 ..getTheme()),
-          BlocProvider(create: (context) => sl<AuthenticationCubit>()),
+          BlocProvider(
+              create: (context) => sl<AuthenticationCubit>()..getCurrentUser()),
           BlocProvider(create: (context) => sl<CartCubit>()),
           BlocProvider(create: (context) => sl<StoreCubit>()),
           BlocProvider(create: (context) => sl<UserCubit>()),
