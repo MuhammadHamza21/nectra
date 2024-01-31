@@ -51,7 +51,7 @@ class OnBoardingScreen extends StatelessWidget {
                         AppCubit.get(context).saveOnBoarding();
                         navigateTo(
                           context,
-                          LoginScreen(),
+                          const LoginScreen(),
                         );
                       },
                       title: AppStrings.getStarted(context),
