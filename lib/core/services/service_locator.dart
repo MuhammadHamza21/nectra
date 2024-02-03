@@ -14,6 +14,8 @@ import 'package:nectar/authentication/domain/repository/base_authentication_repo
 import 'package:nectar/authentication/domain/usecases/create_user_with_email_and_password.dart';
 import 'package:nectar/authentication/domain/usecases/gt_current_user.dart';
 import 'package:nectar/authentication/domain/usecases/sign_in_with_email_and_password.dart';
+import 'package:nectar/authentication/domain/usecases/verify_code.dart';
+import 'package:nectar/authentication/domain/usecases/verify_phone_number.dart';
 import 'package:nectar/authentication/presentation/controller/authentication_cubit.dart';
 import 'package:nectar/cart/presentation/controller/cart_cubit.dart';
 import 'package:nectar/core/local/cache_helper.dart';
@@ -28,7 +30,7 @@ class ServiceLocator {
   static init() async {
     // bloc
     sl.registerFactory(() => AppCubit(sl(), sl()));
-    sl.registerFactory(() => AuthenticationCubit(sl(), sl(), sl()));
+    sl.registerFactory(() => AuthenticationCubit(sl(), sl(), sl(), sl(), sl()));
     sl.registerFactory(() => CartCubit());
     sl.registerFactory(() => StoreCubit());
     sl.registerFactory(() => UserCubit());
@@ -63,6 +65,10 @@ class ServiceLocator {
         baseAuthenticationRepository: sl()));
     sl.registerLazySingleton(
         () => GetCurrentUserUsecase(baseAuthenticationRepository: sl()));
+    sl.registerLazySingleton(
+        () => VerifyPhoneNumberUsecase(baseAuthenticationRepository: sl()));
+    sl.registerLazySingleton(
+        () => VerifyCodeUsecase(baseAuthenticationRepository: sl()));
     // external
     DioHelper.init();
     await CacheHelper.init();

@@ -25,5 +25,7 @@
     "AlreadyHaveAnAccount": "لديك حساب بالفعل؟ ",
     "SignIn": "تسجيل الدخول",
     "EnterYourMobileNumber": "ادخل رقم الهاتف",
-    "EnterYourMobile": "ادخل رقمك"
+    "EnterYourMobile": "ادخل رقمك",
+    "EnterOTPCode": "ادخل الكود المكون من 6 ارقام",
+    "ResendCode": "اعادة ارسال الكود"
 }

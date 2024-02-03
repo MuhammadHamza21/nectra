@@ -3,11 +3,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
+import 'package:intl_phone_field/phone_number.dart';
+
 import 'package:nectar/core/utils/text_styles/text_styles.dart';
 
 class AppPhoneField extends StatelessWidget {
   const AppPhoneField({
-    super.key,
+    Key? key,
     required this.hintText,
     this.contentPadding,
     this.focusedBorder,
@@ -20,7 +22,8 @@ class AppPhoneField extends StatelessWidget {
     this.textInputAction,
     this.autofillHints,
     this.validateText,
-  });
+    this.onChanged,
+  }) : super(key: key);
 
   final String hintText;
   final EdgeInsetsGeometry? contentPadding;
@@ -34,6 +37,7 @@ class AppPhoneField extends StatelessWidget {
   final TextInputAction? textInputAction;
   final Iterable<String>? autofillHints;
   final String? validateText;
+  final Function(PhoneNumber)? onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -54,44 +58,12 @@ class AppPhoneField extends StatelessWidget {
               horizontal: 20.w,
               vertical: 18.h,
             ),
-        // focusedBorder: focusedBorder ??
-        //     OutlineInputBorder(
-        //       borderSide: const BorderSide(
-        //         color: AppColors.primaryColor,
-        //         width: 1.3,
-        //       ),
-        //       borderRadius: BorderRadius.circular(16),
-        //     ),
-        // enabledBorder: enabledBorder ??
-        //     OutlineInputBorder(
-        //       borderSide: const BorderSide(
-        //         color: AppColors.lighterGrey,
-        //         width: 1.3,
-        //       ),
-        //       borderRadius: BorderRadius.circular(16),
-        //     ),
-        // errorBorder: OutlineInputBorder(
-        //   borderSide: const BorderSide(
-        //     color: Colors.red,
-        //     width: 1.3,
-        //   ),
-        //   borderRadius: BorderRadius.circular(16),
-        // ),
-        // focusedErrorBorder: OutlineInputBorder(
-        //   borderSide: const BorderSide(
-        //     color: AppColors.primaryColor,
-        //     width: 1.3,
-        //   ),
-        //   borderRadius: BorderRadius.circular(16),
-        // ),
         hintStyle: hintStyle ?? TextStyles.font18LighGreyMediumGilroy,
         hintText: hintText,
         suffixIcon: suffixIcon,
       ),
       languageCode: "en",
-      onChanged: (phone) {
-        print(phone.completeNumber);
-      },
+      onChanged: onChanged,
       onCountryChanged: (country) {
         print('Country changed to: ${country.name}');
       },

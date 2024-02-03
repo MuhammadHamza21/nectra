@@ -58,4 +58,30 @@ class AuthenticationRepository extends BaseAuthenticationRepository {
   User? getCurrentUser() {
     return baseAuthenticationRemoteDatasource.getCurrentUser();
   }
+
+  @override
+  Future<Either<Failure, UserCredential>> verifyCode(String code) async {
+    if (await baseNetworkInfo.isConnected) {
+      try {
+        var result = await baseAuthenticationRemoteDatasource.verifyCode(code);
+        return Right(result);
+      } on ServerException catch (failure) {
+        return Left(ServerFailure(message: failure.message));
+      }
+    } else {
+      return const Left(
+          OfflineFailure(message: AppConstants.offlineErrorMessage));
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> verifyPhoneNumber(String phoneNumber) async {
+    if (await baseNetworkInfo.isConnected) {
+      return Right(await baseAuthenticationRemoteDatasource
+          .verifyPhoneNumber(phoneNumber));
+    } else {
+      return const Left(
+          OfflineFailure(message: AppConstants.offlineErrorMessage));
+    }
+  }
 }

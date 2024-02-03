@@ -8,6 +8,8 @@ abstract class BaseAuthenticationRemoteDatasource {
   Future<UserCredential> createUserWithEmailAndPassword(
       CreateUserParams params);
   User? getCurrentUser();
+  Future<void> verifyPhoneNumber(String phoneNumber);
+  Future<UserCredential> verifyCode(String code);
 }
 
 class AuthenticationRemoteDatasource
@@ -37,12 +39,40 @@ class AuthenticationRemoteDatasource
       );
       return user;
     } on FirebaseAuthException catch (failure) {
-      throw ServerException(message: failure.message ?? "Errorrrrrrrrrrrrrrrr");
+      throw ServerException(message: failure.code);
     }
   }
 
   @override
   User? getCurrentUser() {
     return _firebaseAuth.currentUser;
+  }
+
+  @override
+  Future<void> verifyPhoneNumber(String phoneNumber) async {
+    return await _firebaseAuth.verifyPhoneNumber(
+      phoneNumber: phoneNumber,
+      verificationCompleted: (PhoneAuthCredential credential) async {
+        await _firebaseAuth.signInWithCredential(credential);
+      },
+      verificationFailed: (FirebaseAuthException e) {},
+      codeSent: (String verificationId, int? resendToken) async {},
+      codeAutoRetrievalTimeout: (String verificationId) {},
+    );
+  }
+
+  @override
+  Future<UserCredential> verifyCode(String code) async {
+    try {
+      String smsCode = code;
+      // String? verificationId;
+      PhoneAuthCredential credential =
+          PhoneAuthProvider.credential(verificationId: "", smsCode: smsCode);
+      var user = await _firebaseAuth.signInWithCredential(credential);
+      print("Phone Number is: ${user.user!.phoneNumber}");
+      return user;
+    } on FirebaseAuthException catch (failure) {
+      throw ServerException(message: failure.code);
+    }
   }
 }

@@ -32,3 +32,17 @@ final class CreateUserWithEmailAndPasswordSuccessState
 
 final class CreateUserWithEmailAndPasswordErrorState
     extends AuthenticationState {}
+
+final class VerifyPhoneNumberSuccessState extends AuthenticationState {}
+
+final class VerifyPhoneNumberLoadingState extends AuthenticationState {}
+
+final class VerifyPhoneNumberOfflineState extends AuthenticationState {}
+
+final class VerifyCodeSuccessState extends AuthenticationState {}
+
+final class VerifyCodeLoadingState extends AuthenticationState {}
+
+final class VerifyCodeOfflineState extends AuthenticationState {}
+
+final class VerifyCodeErrorState extends AuthenticationState {}

@@ -75,4 +75,11 @@ class TextStyles {
     fontWeight: AppFontWeights.medium,
     fontFamily: "Gilroy",
   );
+
+  static TextStyle font18GreenMediumGilroy = TextStyle(
+    fontSize: 18.sp,
+    color: AppColors.primaryColor,
+    fontWeight: AppFontWeights.medium,
+    fontFamily: "Gilroy",
+  );
 }

@@ -10,4 +10,6 @@ abstract class BaseAuthenticationRepository {
   Future<Either<Failure, UserCredential>> createUserWithEmailAndPassword(
       CreateUserParams params);
   User? getCurrentUser();
+  Future<Either<Failure, void>> verifyPhoneNumber(String phoneNumber);
+  Future<Either<Failure, UserCredential>> verifyCode(String code);
 }

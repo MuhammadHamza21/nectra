@@ -25,5 +25,7 @@
     "AlreadyHaveAnAccount": "Already have an account? ",
     "SignIn": "Sign In",
     "EnterYourMobileNumber": "Enter your mobile number",
-    "EnterYourMobile": "Enter your mobile"
+    "EnterYourMobile": "Enter your mobile",
+    "EnterOTPCode": "Enter your 6-digit code",
+    "ResendCode": "Resend Code"
 }
