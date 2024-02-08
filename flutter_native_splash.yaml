@@ -10,7 +10,7 @@ flutter_native_splash:
   #branding_dark: assets/dart_dark.png
 
   android_12:
-    image: assets/images/162.png
+    image: assets/images/splash12.png
     color: "#53B175"
     icon_background_color: "#53B175"
     #branding: assets/dart.png
