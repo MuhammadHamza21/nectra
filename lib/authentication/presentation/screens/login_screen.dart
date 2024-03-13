@@ -4,12 +4,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:nectar/app/presentation/layouts/home_layout.dart';
 import 'package:nectar/authentication/domain/usecases/sign_in_with_email_and_password.dart';
 
 import 'package:nectar/authentication/presentation/controller/authentication_cubit.dart';
 import 'package:nectar/authentication/presentation/widgets/alternative_sign_in_buttons.dart';
 import 'package:nectar/authentication/presentation/widgets/do_not_have_account.dart';
 import 'package:nectar/authentication/presentation/widgets/forgot_password_widget.dart';
+import 'package:nectar/core/utils/navigations/navigate_and_finish.dart';
 import 'package:nectar/core/utils/strings/app_strings.dart';
 import 'package:nectar/core/utils/text_styles/text_styles.dart';
 import 'package:nectar/core/widgets/app_text_button.dart';
@@ -141,12 +143,18 @@ class _LoginScreenState extends State<LoginScreen> {
                     if (state is SignInWithEmailAndPasswordOfflineState ||
                         state is SignInWithEmailAndPasswordErrorState) {
                       SnackbarMessage.showErrorMessage(
-                          context, authCubit.userCredentialsMessage);
+                        context,
+                        authCubit.userCredentialsMessage,
+                      );
                     } else if (state
                         is SignInWithEmailAndPasswordSuccessState) {
                       SnackbarMessage.showSuccessMessage(
                         context,
-                        "Logged in Successfully",
+                        AppStrings.loggedInSuccess(context),
+                      );
+                      navigateAndFinish(
+                        context,
+                        const HomeLayout(),
                       );
                     }
                   },

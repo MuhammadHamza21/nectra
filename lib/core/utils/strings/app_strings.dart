@@ -62,4 +62,6 @@ class AppStrings {
       getLangFromJson(context: context, text: "EnterOTPCode");
   static String resendCode(BuildContext context) =>
       getLangFromJson(context: context, text: "ResendCode");
+  static String loggedInSuccess(BuildContext context) =>
+      getLangFromJson(context: context, text: "LoggedInSuccess");
 }

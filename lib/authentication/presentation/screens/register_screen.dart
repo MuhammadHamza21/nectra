@@ -3,12 +3,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:nectar/app/presentation/layouts/home_layout.dart';
 import 'package:nectar/authentication/domain/usecases/create_user_with_email_and_password.dart';
 import 'package:nectar/authentication/presentation/controller/authentication_cubit.dart';
-import 'package:nectar/authentication/presentation/screens/mobile_number_screen.dart';
 import 'package:nectar/authentication/presentation/widgets/already_have_an_account_text.dart';
 import 'package:nectar/authentication/presentation/widgets/terms_and_condition_widget.dart';
-import 'package:nectar/core/utils/navigations/navigate_to.dart';
+import 'package:nectar/core/utils/navigations/navigate_and_finish.dart';
 import 'package:nectar/core/utils/strings/app_strings.dart';
 import 'package:nectar/core/utils/text_styles/text_styles.dart';
 import 'package:nectar/core/widgets/app_text_button.dart';
@@ -158,9 +158,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             context, authCubit.userCredentialsMessage);
                       } else if (state
                           is CreateUserWithEmailAndPasswordSuccessState) {
-                        navigateTo(
+                        navigateAndFinish(
                           context,
-                          MobileNumberScreen(),
+                          const HomeLayout(),
                         );
                       }
                     },

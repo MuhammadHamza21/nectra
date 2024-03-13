@@ -72,7 +72,7 @@ class ServiceLocator {
     // external
     DioHelper.init();
     await CacheHelper.init();
-    Firebase.initializeApp();
+    await Firebase.initializeApp();
     sl.registerLazySingleton(() => InternetConnectionChecker());
     sl.registerLazySingleton<BaseNetworkInfo>(
         () => NetworkInfo(internetConnectionChecker: sl()));

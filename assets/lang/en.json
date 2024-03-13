@@ -27,5 +27,6 @@
     "EnterYourMobileNumber": "Enter your mobile number",
     "EnterYourMobile": "Enter your mobile",
     "EnterOTPCode": "Enter your 6-digit code",
-    "ResendCode": "Resend Code"
+    "ResendCode": "Resend Code",
+    "LoggedInSuccess": "Logged in Successfully"
 }

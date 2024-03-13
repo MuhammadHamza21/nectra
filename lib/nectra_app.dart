@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nectar/app/presentation/controller/app_cubit.dart';
+import 'package:nectar/app/presentation/layouts/home_layout.dart';
 import 'package:nectar/app/presentation/screens/on_boarding_screen.dart';
 import 'package:nectar/authentication/presentation/controller/authentication_cubit.dart';
 import 'package:nectar/authentication/presentation/screens/login_screen.dart';
@@ -28,7 +29,8 @@ class MyApp extends StatelessWidget {
                 ..getOnBoarding()
                 ..getTheme()),
           BlocProvider(
-              create: (context) => sl<AuthenticationCubit>()..getCurrentUser()),
+            create: (context) => sl<AuthenticationCubit>()..getCurrentUser(),
+          ),
           BlocProvider(create: (context) => sl<CartCubit>()),
           BlocProvider(create: (context) => sl<StoreCubit>()),
           BlocProvider(create: (context) => sl<UserCubit>()),
@@ -36,6 +38,7 @@ class MyApp extends StatelessWidget {
         child: BlocBuilder<AppCubit, AppState>(
           builder: (context, state) {
             final appCubit = AppCubit.get(context);
+            final authenticationCubit = AuthenticationCubit.get(context);
             return MaterialApp(
               debugShowCheckedModeBanner: false,
               title: 'Material App',
@@ -51,7 +54,9 @@ class MyApp extends StatelessWidget {
               // themeMode: ThemeMode.dark,
               home: appCubit.isGoToOnBoarding
                   ? const OnBoardingScreen()
-                  : const LoginScreen(),
+                  : authenticationCubit.user == null
+                      ? const LoginScreen()
+                      : const HomeLayout(),
             );
           },
         ),
