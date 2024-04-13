@@ -82,4 +82,10 @@ class TextStyles {
     fontWeight: AppFontWeights.medium,
     fontFamily: "Gilroy",
   );
+  static TextStyle font12GreenSemiboldGilroy = const TextStyle(
+    fontSize: 12,
+    color: AppColors.primaryColor,
+    fontWeight: AppFontWeights.semiBold,
+    fontFamily: "Gilroy",
+  );
 }

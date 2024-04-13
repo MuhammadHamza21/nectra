@@ -64,4 +64,14 @@ class AppStrings {
       getLangFromJson(context: context, text: "ResendCode");
   static String loggedInSuccess(BuildContext context) =>
       getLangFromJson(context: context, text: "LoggedInSuccess");
+  static String shop(BuildContext context) =>
+      getLangFromJson(context: context, text: "Shop");
+  static String explore(BuildContext context) =>
+      getLangFromJson(context: context, text: "Explore");
+  static String cart(BuildContext context) =>
+      getLangFromJson(context: context, text: "Cart");
+  static String favourites(BuildContext context) =>
+      getLangFromJson(context: context, text: "Favourites");
+  static String account(BuildContext context) =>
+      getLangFromJson(context: context, text: "Account");
 }

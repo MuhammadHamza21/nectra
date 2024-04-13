@@ -28,5 +28,10 @@
     "EnterYourMobile": "ادخل رقمك",
     "EnterOTPCode": "ادخل الكود المكون من 6 ارقام",
     "ResendCode": "اعادة ارسال الكود",
-    "LoggedInSuccess": "تم تسجيل الدخول بنجاح"
+    "LoggedInSuccess": "تم تسجيل الدخول بنجاح",
+    "Shop": "المتجر",
+    "Explore": "اكتشف",
+    "Cart": "عربتي",
+    "Favourites": "المضلة",
+    "Account": "الحساب الشخصي"
 }

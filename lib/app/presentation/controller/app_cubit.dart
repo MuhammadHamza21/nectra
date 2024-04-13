@@ -2,12 +2,18 @@
 import 'dart:async';
 
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:nectar/app/domain/usecases/get_saved_data.dart';
 import 'package:nectar/app/domain/usecases/save_data.dart';
+import 'package:nectar/cart/presentation/screens/cart_screen.dart';
 import 'package:nectar/core/constants/app_constants.dart';
 import 'package:nectar/core/utils/enums/enums.dart';
+import 'package:nectar/store/presentation/screens/explore_screen.dart';
+import 'package:nectar/store/presentation/screens/store_screen.dart';
+import 'package:nectar/user/presentation/screens/account_screen.dart';
+import 'package:nectar/user/presentation/screens/favourites_screen.dart';
 
 part 'app_state.dart';
 
@@ -19,6 +25,14 @@ class AppCubit extends Cubit<AppState> {
     this.getSavedDataUsecase,
   ) : super(AppInitial());
   static AppCubit get(context) => BlocProvider.of(context);
+  List<Widget> screens = [
+    const StoreScreen(),
+    const ExploreScreen(),
+    const CartScreen(),
+    const FavouritesScreen(),
+    const AccountScreen(),
+  ];
+  int currentIndex = 0;
   bool isGoToOnBoarding = true;
   String onBoardingMessage = "";
   bool isDark = false;
@@ -120,5 +134,11 @@ class AppCubit extends Cubit<AppState> {
         emit(state.copyWith(isDarkState: RequestState.loaded));
       },
     );
+  }
+
+  void changeCurrentIndex(int index) {
+    emit(state.copyWith(changingCurrentIndex: RequestState.loading));
+    currentIndex = index;
+    emit(state.copyWith(changingCurrentIndex: RequestState.loaded));
   }
 }

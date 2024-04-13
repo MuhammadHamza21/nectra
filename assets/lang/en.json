@@ -28,5 +28,10 @@
     "EnterYourMobile": "Enter your mobile",
     "EnterOTPCode": "Enter your 6-digit code",
     "ResendCode": "Resend Code",
-    "LoggedInSuccess": "Logged in Successfully"
+    "LoggedInSuccess": "Logged in Successfully",
+    "Shop": "Shop",
+    "Explore": "Explore",
+    "Cart": "Cart",
+    "Favourites": "Favourites",
+    "Account": "Account"
 }
