@@ -88,4 +88,19 @@ class TextStyles {
     fontWeight: AppFontWeights.semiBold,
     fontFamily: "Gilroy",
   );
+
+  static TextStyle font18DividerSemiboldGilroy(BuildContext context) =>
+      TextStyle(
+        fontSize: 18.sp,
+        color: Theme.of(context).dividerColor,
+        fontWeight: AppFontWeights.semiBold,
+        fontFamily: "Gilroy",
+      );
+
+  static TextStyle font16CanvasBoldGilroy(BuildContext context) => TextStyle(
+        fontSize: 16.sp,
+        color: Theme.of(context).canvasColor,
+        fontWeight: AppFontWeights.bold,
+        fontFamily: "Gilroy",
+      );
 }

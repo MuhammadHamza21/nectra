@@ -16,4 +16,7 @@ ThemeData lightTheme = ThemeData(
   floatingActionButtonTheme: floatingActionButtonThemeData,
   progressIndicatorTheme: progressIndicatorThemeData,
   bottomNavigationBarTheme: lightBottomNavigationBarThemeData,
+  dividerColor: AppColors.darkerGreyColor,
+  shadowColor: AppColors.lighterrGreyColor,
+  focusColor: AppColors.lighterGreyColor,
 );

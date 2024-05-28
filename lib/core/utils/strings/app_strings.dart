@@ -74,4 +74,14 @@ class AppStrings {
       getLangFromJson(context: context, text: "Favourites");
   static String account(BuildContext context) =>
       getLangFromJson(context: context, text: "Account");
+  static String searchStore(BuildContext context) =>
+      getLangFromJson(context: context, text: "SearchStore");
+  static String seeAll(BuildContext context) =>
+      getLangFromJson(context: context, text: "SeeAll");
+  static String exclusiveOffers(BuildContext context) =>
+      getLangFromJson(context: context, text: "ExclusiveOffers");
+  static String bestSelling(BuildContext context) =>
+      getLangFromJson(context: context, text: "BestSelling");
+  static String groceries(BuildContext context) =>
+      getLangFromJson(context: context, text: "Groceries");
 }

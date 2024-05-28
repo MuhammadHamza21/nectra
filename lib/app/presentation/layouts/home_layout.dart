@@ -11,7 +11,7 @@ class HomeLayout extends StatelessWidget {
     return BlocBuilder<AppCubit, AppState>(builder: (context, state) {
       final appCubit = AppCubit.get(context);
       return Scaffold(
-        body: appCubit.screens[appCubit.currentIndex],
+        body: SafeArea(child: appCubit.screens[appCubit.currentIndex]),
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: appCubit.currentIndex,
           onTap: (value) {
