@@ -7,7 +7,7 @@ import 'package:nectar/core/utils/text_styles/text_styles.dart';
 
 class AppTextButton extends StatelessWidget {
   const AppTextButton({
-    Key? key,
+    super.key,
     this.backgroundColor,
     this.foregroundColor,
     this.horizontalPadding,
@@ -17,7 +17,7 @@ class AppTextButton extends StatelessWidget {
     required this.onPressed,
     this.child,
     this.title,
-  }) : super(key: key);
+  });
   final Color? backgroundColor;
   final Color? foregroundColor;
   final double? horizontalPadding;
@@ -42,7 +42,7 @@ class AppTextButton extends StatelessWidget {
         ),
         shape: MaterialStatePropertyAll(
           RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(19),
+            borderRadius: BorderRadius.circular(19.r),
           ),
         ),
         padding: MaterialStatePropertyAll(

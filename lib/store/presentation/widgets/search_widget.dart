@@ -8,8 +8,10 @@ class SearchWidget extends StatelessWidget {
   const SearchWidget({
     super.key,
     required this.onTap,
+    this.marginWidth = 25,
   });
   final Function() onTap;
+  final double marginWidth;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,7 @@ class SearchWidget extends StatelessWidget {
           color: Theme.of(context).shadowColor,
         ),
         padding: EdgeInsets.symmetric(horizontal: 15.w),
-        margin: EdgeInsets.symmetric(horizontal: 25.w),
+        margin: EdgeInsets.symmetric(horizontal: marginWidth.w),
         child: Row(
           children: [
             Icon(

@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nectar/core/themes/colors/app_colors.dart';
 import 'package:nectar/core/utils/text_styles/app_font_weights.dart';
 import 'package:nectar/core/utils/text_styles/text_styles.dart';
+import 'package:nectar/core/widgets/app_text_button.dart';
 import 'package:nectar/core/widgets/spacing.dart';
 
 class ItemWidget extends StatelessWidget {
@@ -27,10 +28,17 @@ class ItemWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Center(
-            child: Image.asset(
-              "assets/images/felfel.png",
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10.r),
+                image: const DecorationImage(
+                  image: AssetImage("assets/images/felfel.png"),
+                  fit: BoxFit.fill,
+                ),
+              ),
               height: 85.h,
               width: 97.w,
+              clipBehavior: Clip.antiAlias,
             ),
           ),
           verticalSpacing(20),
@@ -61,21 +69,17 @@ class ItemWidget extends StatelessWidget {
                       .copyWith(fontWeight: AppFontWeights.semiBold),
                 ),
               ),
-              GestureDetector(
-                onTap: () {},
-                child: Container(
-                  height: 45.h,
-                  width: 45.h,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(17.r),
-                    color: AppColors.primaryColor,
-                  ),
-                  child: Center(
-                    child: Icon(
-                      Icons.add,
-                      size: 25.sp,
-                      color: AppColors.whiteColor,
-                    ),
+              SizedBox(
+                width: 45.h,
+                height: 45.h,
+                child: AppTextButton(
+                  onPressed: () {},
+                  horizontalPadding: 0,
+                  verticalPadding: 0,
+                  child: Icon(
+                    Icons.add,
+                    size: 25.sp,
+                    color: AppColors.whiteColor,
                   ),
                 ),
               ),
