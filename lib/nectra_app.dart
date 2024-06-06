@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
             create: (context) => sl<AuthenticationCubit>()..getCurrentUser(),
           ),
           BlocProvider(create: (context) => sl<CartCubit>()),
-          BlocProvider(create: (context) => sl<StoreCubit>()),
+          BlocProvider(create: (context) => sl<StoreCubit>()..getCategories()),
           BlocProvider(create: (context) => sl<UserCubit>()),
         ],
         child: BlocBuilder<AppCubit, AppState>(

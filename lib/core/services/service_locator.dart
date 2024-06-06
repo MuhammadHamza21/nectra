@@ -21,6 +21,10 @@ import 'package:nectar/cart/presentation/controller/cart_cubit.dart';
 import 'package:nectar/core/local/cache_helper.dart';
 import 'package:nectar/core/network/dio_helper.dart';
 import 'package:nectar/core/network/network_info.dart';
+import 'package:nectar/store/data/data_source/remote_data_source.dart';
+import 'package:nectar/store/data/repository/store_repository.dart';
+import 'package:nectar/store/domain/repository/base_store_repository.dart';
+import 'package:nectar/store/domain/usecases/get_categories.dart';
 import 'package:nectar/store/presentation/controller/store_cubit.dart';
 import 'package:nectar/user/presentation/controller/user_cubit.dart';
 
@@ -32,7 +36,7 @@ class ServiceLocator {
     sl.registerFactory(() => AppCubit(sl(), sl()));
     sl.registerFactory(() => AuthenticationCubit(sl(), sl(), sl(), sl(), sl()));
     sl.registerFactory(() => CartCubit());
-    sl.registerFactory(() => StoreCubit());
+    sl.registerFactory(() => StoreCubit(sl()));
     sl.registerFactory(() => UserCubit());
     // repositories
     sl.registerLazySingleton<BaseAppRepository>(
@@ -48,6 +52,8 @@ class ServiceLocator {
         baseAuthenticationRemoteDatasource: sl(),
       ),
     );
+    sl.registerLazySingleton<BaseStoreRepository>(() => StoreRepository(
+        baseStoreRemoteDatasource: sl(), baseNetworkInfo: sl()));
     // data_source
     sl.registerLazySingleton<BaseAppRemoteDatasource>(
         () => AppRemoteDatasource());
@@ -55,6 +61,8 @@ class ServiceLocator {
         () => AppLocalDatasource());
     sl.registerLazySingleton<BaseAuthenticationRemoteDatasource>(
         () => AuthenticationRemoteDatasource());
+    sl.registerLazySingleton<BaseStoreRemoteDatasource>(
+        () => StoreRemoteDatasource());
     // usecases
     sl.registerLazySingleton(() => SaveDataUsecase(baseAppRepository: sl()));
     sl.registerLazySingleton(
@@ -69,6 +77,8 @@ class ServiceLocator {
         () => VerifyPhoneNumberUsecase(baseAuthenticationRepository: sl()));
     sl.registerLazySingleton(
         () => VerifyCodeUsecase(baseAuthenticationRepository: sl()));
+    sl.registerLazySingleton(
+        () => GetCategoriesUsecase(baseStoreRepository: sl()));
     // external
     DioHelper.init();
     await CacheHelper.init();

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nectar/app/presentation/controller/app_cubit.dart';
 import 'package:nectar/core/utils/strings/app_strings.dart';
+import 'package:nectar/store/presentation/controller/store_cubit.dart';
 
 class HomeLayout extends StatelessWidget {
   const HomeLayout({super.key});
@@ -50,6 +51,9 @@ class HomeLayout extends StatelessWidget {
             ),
           ],
         ),
+        floatingActionButton: FloatingActionButton(onPressed: () {
+          StoreCubit.get(context).getCategories();
+        }),
       );
     });
   }
