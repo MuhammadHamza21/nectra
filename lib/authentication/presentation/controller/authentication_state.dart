@@ -46,3 +46,19 @@ final class VerifyCodeLoadingState extends AuthenticationState {}
 final class VerifyCodeOfflineState extends AuthenticationState {}
 
 final class VerifyCodeErrorState extends AuthenticationState {}
+
+final class SaveUserDataSuccessState extends AuthenticationState {}
+
+final class SaveUserDataErrorState extends AuthenticationState {}
+
+final class SaveUserDataLoadingState extends AuthenticationState {}
+
+final class SaveUserDataOfflineState extends AuthenticationState {}
+
+final class SignOutSuccessState extends AuthenticationState {}
+
+final class SignOutErrorState extends AuthenticationState {}
+
+final class SignOutOfflineState extends AuthenticationState {}
+
+final class SignOutLoadingState extends AuthenticationState {}

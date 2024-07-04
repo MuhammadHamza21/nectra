@@ -13,7 +13,9 @@ import 'package:nectar/authentication/data/repository/authentication_repository.
 import 'package:nectar/authentication/domain/repository/base_authentication_repository.dart';
 import 'package:nectar/authentication/domain/usecases/create_user_with_email_and_password.dart';
 import 'package:nectar/authentication/domain/usecases/gt_current_user.dart';
+import 'package:nectar/authentication/domain/usecases/save_user_data.dart';
 import 'package:nectar/authentication/domain/usecases/sign_in_with_email_and_password.dart';
+import 'package:nectar/authentication/domain/usecases/sign_out.dart';
 import 'package:nectar/authentication/domain/usecases/verify_code.dart';
 import 'package:nectar/authentication/domain/usecases/verify_phone_number.dart';
 import 'package:nectar/authentication/presentation/controller/authentication_cubit.dart';
@@ -25,6 +27,7 @@ import 'package:nectar/store/data/data_source/remote_data_source.dart';
 import 'package:nectar/store/data/repository/store_repository.dart';
 import 'package:nectar/store/domain/repository/base_store_repository.dart';
 import 'package:nectar/store/domain/usecases/get_categories.dart';
+import 'package:nectar/store/domain/usecases/save_category.dart';
 import 'package:nectar/store/presentation/controller/store_cubit.dart';
 import 'package:nectar/user/presentation/controller/user_cubit.dart';
 
@@ -34,9 +37,10 @@ class ServiceLocator {
   static init() async {
     // bloc
     sl.registerFactory(() => AppCubit(sl(), sl()));
-    sl.registerFactory(() => AuthenticationCubit(sl(), sl(), sl(), sl(), sl()));
+    sl.registerFactory(
+        () => AuthenticationCubit(sl(), sl(), sl(), sl(), sl(), sl(), sl()));
     sl.registerFactory(() => CartCubit());
-    sl.registerFactory(() => StoreCubit(sl()));
+    sl.registerFactory(() => StoreCubit(sl(), sl()));
     sl.registerFactory(() => UserCubit());
     // repositories
     sl.registerLazySingleton<BaseAppRepository>(
@@ -79,6 +83,12 @@ class ServiceLocator {
         () => VerifyCodeUsecase(baseAuthenticationRepository: sl()));
     sl.registerLazySingleton(
         () => GetCategoriesUsecase(baseStoreRepository: sl()));
+    sl.registerLazySingleton(
+        () => SaveUserDataUsecase(baseAuthenticationRepository: sl()));
+    sl.registerLazySingleton(
+        () => SignOutUsecase(baseAuthenticationRepository: sl()));
+    sl.registerLazySingleton(
+        () => SaveCategoryUsercase(baseStoreRepository: sl()));
     // external
     DioHelper.init();
     await CacheHelper.init();

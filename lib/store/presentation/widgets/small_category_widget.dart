@@ -4,13 +4,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:nectar/core/utils/text_styles/text_styles.dart';
 import 'package:nectar/core/widgets/spacing.dart';
+import 'package:nectar/store/domain/entities/category.dart';
 
 class SmallCategoryWidget extends StatelessWidget {
   const SmallCategoryWidget({
     super.key,
     required this.backgroundColor,
+    required this.category,
   });
   final Color backgroundColor;
+  final Category category;
 
   @override
   Widget build(BuildContext context) {
@@ -28,15 +31,15 @@ class SmallCategoryWidget extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 17.w),
           child: Row(
             children: [
-              Image.asset(
-                "assets/images/pulses.png",
+              Image.network(
+                category.image,
                 height: 72.h,
                 width: 72.h,
               ),
               horizontalSpacing(15),
               Expanded(
                 child: Text(
-                  "Pulses",
+                  category.nameEn,
                   style:
                       TextStyles.font26CanvasSemiBoldGolroy(context).copyWith(
                     fontSize: 20.sp,

@@ -11,12 +11,22 @@ class CategoryModel extends Category {
   });
 
   factory CategoryModel.fromSnapshot(
-          DocumentSnapshot<Map<String, dynamic>> json) =>
-      CategoryModel(
-        id: json['id'] ?? "",
-        nameEn: json['name_en'] ?? "",
-        nameAr: json['name_ar'] ?? "",
-        image: json['image'] ?? "",
-        parentId: json['parent_id'] ?? "",
-      );
+      DocumentSnapshot<Map<String, dynamic>> document) {
+    return CategoryModel(
+      id: document.id,
+      nameEn: document['name_en'] ?? "",
+      nameAr: document['name_ar'] ?? "",
+      image: document['image'] ?? "",
+      parentId: document['parent_id'] ?? "",
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'name_en': nameEn,
+      'name_ar': nameAr,
+      'image': image,
+      'parent_id': parentId,
+    };
+  }
 }

@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nectar/app/presentation/layouts/home_layout.dart';
 import 'package:nectar/authentication/domain/usecases/create_user_with_email_and_password.dart';
+import 'package:nectar/authentication/domain/usecases/save_user_data.dart';
 import 'package:nectar/authentication/presentation/controller/authentication_cubit.dart';
 import 'package:nectar/authentication/presentation/widgets/already_have_an_account_text.dart';
 import 'package:nectar/authentication/presentation/widgets/terms_and_condition_widget.dart';
@@ -161,6 +162,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         navigateAndFinish(
                           context,
                           const HomeLayout(),
+                        );
+                        authCubit.saveUserData(
+                          UserDataParams(
+                            userId: authCubit.userCredentials!.user!.uid,
+                            userName: usernameController.text,
+                            email: emailController.text,
+                          ),
                         );
                       }
                     },

@@ -8,6 +8,7 @@ import 'package:nectar/core/network/network_info.dart';
 import 'package:nectar/store/data/data_source/remote_data_source.dart';
 import 'package:nectar/store/domain/entities/category.dart';
 import 'package:nectar/store/domain/repository/base_store_repository.dart';
+import 'package:nectar/store/domain/usecases/save_category.dart';
 
 class StoreRepository extends BaseStoreRepository {
   final BaseStoreRemoteDatasource baseStoreRemoteDatasource;
@@ -17,11 +18,28 @@ class StoreRepository extends BaseStoreRepository {
     required this.baseNetworkInfo,
   });
   @override
-  Future<Either<Failure, List<Category>>> getCategories(String parentId) async {
+  Future<Either<Failure, List<Category>>> getCategories(
+      String? parentId) async {
     if (await baseNetworkInfo.isConnected) {
       try {
         var result = await baseStoreRemoteDatasource.getCategories(parentId);
         return Right(result);
+      } on ServerException catch (failure) {
+        return Left(ServerFailure(message: failure.message));
+      }
+    } else {
+      return const Left(
+          OfflineFailure(message: AppConstants.offlineErrorMessage));
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> saveCategory(
+      SavingCategoryParams params) async {
+    if (await baseNetworkInfo.isConnected) {
+      try {
+        await baseStoreRemoteDatasource.saveCategory(params);
+        return const Right(null);
       } on ServerException catch (failure) {
         return Left(ServerFailure(message: failure.message));
       }

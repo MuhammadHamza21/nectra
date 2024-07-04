@@ -8,10 +8,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:nectar/authentication/domain/usecases/create_user_with_email_and_password.dart';
 import 'package:nectar/authentication/domain/usecases/gt_current_user.dart';
+import 'package:nectar/authentication/domain/usecases/save_user_data.dart';
 import 'package:nectar/authentication/domain/usecases/sign_in_with_email_and_password.dart';
+import 'package:nectar/authentication/domain/usecases/sign_out.dart';
 import 'package:nectar/authentication/domain/usecases/verify_code.dart';
 import 'package:nectar/authentication/domain/usecases/verify_phone_number.dart';
 import 'package:nectar/core/error/failures.dart';
+import 'package:nectar/core/usecase/base_usecase.dart';
 
 part 'authentication_state.dart';
 
@@ -22,6 +25,8 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
     this.getCurrentUserUsecase,
     this.verifyPhoneNumberUsecase,
     this.verifyCodeUsecase,
+    this.saveUserDataUsecase,
+    this.signOutUsecase,
   ) : super(AuthenticationInitial());
   final SignInWithEmailAndPasswordUsecase signInWithEmailAndPasswordUsecase;
   final CreateUserWithEmailAndPasswordUsecase
@@ -29,12 +34,15 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
   final GetCurrentUserUsecase getCurrentUserUsecase;
   final VerifyPhoneNumberUsecase verifyPhoneNumberUsecase;
   final VerifyCodeUsecase verifyCodeUsecase;
+  final SaveUserDataUsecase saveUserDataUsecase;
+  final SignOutUsecase signOutUsecase;
   static AuthenticationCubit get(BuildContext context) =>
       BlocProvider.of(context);
 
   UserCredential? userCredentials;
   String userCredentialsMessage = '';
   User? user;
+  String userDataMessage = "";
 
   FutureOr<void> signInWithEmailAndPassword(SignInParams params) async {
     emit(SignInWithEmailAndPasswordLoadingState());
@@ -107,6 +115,42 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
       (r) {
         userCredentials = r;
         emit(VerifyCodeSuccessState());
+      },
+    );
+  }
+
+  FutureOr<void> saveUserData(UserDataParams params) async {
+    emit(SaveUserDataLoadingState());
+    var result = await saveUserDataUsecase(params);
+    result.fold(
+      (l) {
+        userDataMessage = l.message;
+        if (l is ServerFailure) {
+          emit(SaveUserDataErrorState());
+        } else if (l is OfflineFailure) {
+          emit(SaveUserDataOfflineState());
+        }
+      },
+      (r) {
+        emit(SaveUserDataSuccessState());
+      },
+    );
+  }
+
+  FutureOr<void> signOut() async {
+    emit(SignOutLoadingState());
+    var result = await signOutUsecase(NoParams());
+    result.fold(
+      (l) {
+        userCredentialsMessage = l.message;
+        if (l is ServerFailure) {
+          emit(SignOutErrorState());
+        } else if (l is OfflineFailure) {
+          emit(SignOutOfflineState());
+        }
+      },
+      (r) {
+        emit(SignOutSuccessState());
       },
     );
   }

@@ -6,13 +6,13 @@ import 'package:nectar/core/usecase/base_usecase.dart';
 import 'package:nectar/store/domain/entities/category.dart';
 import 'package:nectar/store/domain/repository/base_store_repository.dart';
 
-class GetCategoriesUsecase extends BaseUsecase<List<Category>, String> {
+class GetCategoriesUsecase extends BaseUsecase<List<Category>, String?> {
   final BaseStoreRepository baseStoreRepository;
   GetCategoriesUsecase({
     required this.baseStoreRepository,
   });
   @override
-  Future<Either<Failure, List<Category>>> call(String parameters) async {
+  Future<Either<Failure, List<Category>>> call(String? parameters) async {
     return await baseStoreRepository.getCategories(parameters);
   }
 }

@@ -84,4 +84,6 @@ class AppStrings {
       getLangFromJson(context: context, text: "BestSelling");
   static String groceries(BuildContext context) =>
       getLangFromJson(context: context, text: "Groceries");
+  static String signOut(BuildContext context) =>
+      getLangFromJson(context: context, text: "SignOut");
 }

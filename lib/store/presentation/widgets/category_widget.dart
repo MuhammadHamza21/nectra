@@ -4,13 +4,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:nectar/core/utils/text_styles/text_styles.dart';
 import 'package:nectar/core/widgets/spacing.dart';
+import 'package:nectar/store/domain/entities/category.dart';
 
 class CategoryWidget extends StatelessWidget {
   const CategoryWidget({
     super.key,
     required this.backgroundColor,
+    required this.category,
   });
   final Color backgroundColor;
+  final Category category;
 
   @override
   Widget build(BuildContext context) {
@@ -33,8 +36,8 @@ class CategoryWidget extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10.r),
-              image: const DecorationImage(
-                image: AssetImage("assets/images/pulses.png"),
+              image: DecorationImage(
+                image: NetworkImage(category.image),
               ),
             ),
             height: 75.h,
@@ -43,7 +46,7 @@ class CategoryWidget extends StatelessWidget {
           ),
           verticalSpacing(20),
           Text(
-            "Fresh Fruits & Vegetable",
+            category.nameEn,
             style: TextStyles.font16CanvasBoldGilroy(context),
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
