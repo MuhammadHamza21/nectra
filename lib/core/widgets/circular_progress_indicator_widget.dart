@@ -4,12 +4,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CircularProgressIndicatorWidget extends StatelessWidget {
   const CircularProgressIndicatorWidget({
-    Key? key,
+    super.key,
     this.verticalPadding,
     this.horizontalPadding,
     this.color,
     this.strokeWidth,
-  }) : super(key: key);
+  });
 
   final double? verticalPadding;
   final double? horizontalPadding;

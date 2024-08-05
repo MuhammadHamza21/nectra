@@ -18,9 +18,9 @@ import 'package:nectar/core/widgets/spacing.dart';
 
 class OtpCodeScreen extends StatelessWidget {
   OtpCodeScreen({
-    Key? key,
+    super.key,
     required this.phoneNumber,
-  }) : super(key: key);
+  });
   final String phoneNumber;
   var otpController = TextEditingController();
 

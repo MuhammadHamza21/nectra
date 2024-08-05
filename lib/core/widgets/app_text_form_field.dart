@@ -6,7 +6,7 @@ import 'package:nectar/core/utils/text_styles/text_styles.dart';
 
 class AppTextFormField extends StatelessWidget {
   const AppTextFormField({
-    Key? key,
+    super.key,
     required this.controller,
     this.isObsecureText,
     this.keyboardType,
@@ -17,7 +17,7 @@ class AppTextFormField extends StatelessWidget {
     this.suffixIcon,
     this.contentPadding,
     this.hintText,
-  }) : super(key: key);
+  });
   final TextEditingController controller;
   final bool? isObsecureText;
   final TextInputType? keyboardType;

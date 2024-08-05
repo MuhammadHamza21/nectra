@@ -9,7 +9,7 @@ import 'package:nectar/core/utils/text_styles/text_styles.dart';
 
 class AppPhoneField extends StatelessWidget {
   const AppPhoneField({
-    Key? key,
+    super.key,
     required this.hintText,
     this.contentPadding,
     this.focusedBorder,
@@ -23,7 +23,7 @@ class AppPhoneField extends StatelessWidget {
     this.autofillHints,
     this.validateText,
     this.onChanged,
-  }) : super(key: key);
+  });
 
   final String hintText;
   final EdgeInsetsGeometry? contentPadding;

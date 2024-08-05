@@ -27,7 +27,7 @@ class DonotHaveAccount extends StatelessWidget {
               ..onTap = () {
                 navigateTo(
                   context,
-                  RegisterScreen(),
+                  const RegisterScreen(),
                 );
               },
           ),

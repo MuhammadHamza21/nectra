@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 
 class BackgroundImageWidget extends StatelessWidget {
   const BackgroundImageWidget({
-    Key? key,
+    super.key,
     required this.child,
-  }) : super(key: key);
+  });
   final Widget child;
 
   @override

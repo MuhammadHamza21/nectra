@@ -4,11 +4,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AlternativeSignInButton extends StatelessWidget {
   const AlternativeSignInButton({
-    Key? key,
+    super.key,
     required this.onPressed,
     required this.icon,
     this.iconColor,
-  }) : super(key: key);
+  });
 
   final Function() onPressed;
   final IconData icon;
