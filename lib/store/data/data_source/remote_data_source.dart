@@ -24,7 +24,7 @@ class StoreRemoteDatasource extends BaseStoreRemoteDatasource {
           .collection(ApiConstants.categories)
           .where(
             'parent_id',
-            isEqualTo: "uufhTTlwyVX1ErPFI9WZ",
+            isEqualTo: "8HuLQPPC5FaejKmcvNrU",
           )
           .get();
       if (response.docs.isNotEmpty) {
@@ -62,7 +62,8 @@ class StoreRemoteDatasource extends BaseStoreRemoteDatasource {
             "name_ar": params.nameAr,
             "name_en": params.nameEn,
             "image": imageUrl,
-            "parent_id": "uufhTTlwyVX1ErPFI9WZ",
+            "parent_id": "0",
+            "category_id": params.categoryId,
           });
         },
       );

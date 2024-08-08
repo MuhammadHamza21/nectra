@@ -7,14 +7,16 @@ class Category extends Equatable {
   final String nameAr;
   final String image;
   final String parentId;
+  final String categoryId;
   const Category({
     required this.id,
     required this.nameEn,
     required this.nameAr,
     required this.image,
     required this.parentId,
+    required this.categoryId,
   });
 
   @override
-  List<Object?> get props => [id, nameEn, nameAr, image, parentId];
+  List<Object?> get props => [id, nameEn, nameAr, image, parentId, categoryId];
 }

@@ -22,11 +22,13 @@ class SavingCategoryParams extends Equatable {
   final String nameAr;
   final String nameEn;
   final XFile image;
+  final String categoryId;
   const SavingCategoryParams({
     required this.nameAr,
     required this.nameEn,
     required this.image,
+    required this.categoryId,
   });
   @override
-  List<Object?> get props => [nameAr, nameEn, image];
+  List<Object?> get props => [nameAr, nameEn, image, categoryId];
 }

@@ -26,6 +26,7 @@ class _LoadCategoriesScreenState extends State<LoadCategoriesScreen> {
   var nameArController = TextEditingController();
 
   var nameEnController = TextEditingController();
+  var categoryIdController = TextEditingController();
 
   XFile? image;
 
@@ -37,56 +38,63 @@ class _LoadCategoriesScreenState extends State<LoadCategoriesScreen> {
         builder: (context, state) {
           return Padding(
             padding: EdgeInsets.symmetric(horizontal: 25.w, vertical: 25.h),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                GestureDetector(
-                  onTap: () async {
-                    image = await ImagePicker().pickImage(
-                      source: ImageSource.gallery,
-                    );
-                    setState(() {});
-                  },
-                  child: Container(
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                    ),
-                    height: 150.h,
-                    width: 150.h,
-                    child: image == null
-                        ? Image.asset('assets/images/empty.png')
-                        : Image.file(
-                            File(
-                              image!.path,
-                            ),
-                          ),
-                  ),
-                ),
-                verticalSpacing(45),
-                AppTextFormField(
-                    controller: nameArController, hintText: "Name Arabic"),
-                verticalSpacing(15),
-                AppTextFormField(
-                    controller: nameEnController, hintText: "Name English"),
-                verticalSpacing(15),
-                if (state.savingCategoryState == RequestState.loading)
-                  const CircularProgressIndicatorWidget(),
-                const Spacer(),
-                AppTextButton(
-                  onPressed: () {
-                    final storeCubit = StoreCubit.get(context);
-                    storeCubit.saveCategory(
-                      SavingCategoryParams(
-                        nameAr: nameArController.text,
-                        nameEn: nameEnController.text,
-                        image: image!,
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  GestureDetector(
+                    onTap: () async {
+                      image = await ImagePicker().pickImage(
+                        source: ImageSource.gallery,
+                      );
+                      setState(() {});
+                    },
+                    child: Container(
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
                       ),
-                    );
-                  },
-                  title: "Save",
-                ),
-              ],
+                      height: 150.h,
+                      width: 150.h,
+                      child: image == null
+                          ? Image.asset('assets/images/empty.png')
+                          : Image.file(
+                              File(
+                                image!.path,
+                              ),
+                            ),
+                    ),
+                  ),
+                  verticalSpacing(45),
+                  AppTextFormField(
+                      controller: nameArController, hintText: "Name Arabic"),
+                  verticalSpacing(15),
+                  AppTextFormField(
+                      controller: nameEnController, hintText: "Name English"),
+                  verticalSpacing(15),
+                  AppTextFormField(
+                      controller: categoryIdController,
+                      hintText: "Category Id"),
+                  verticalSpacing(15),
+                  if (state.savingCategoryState == RequestState.loading)
+                    const CircularProgressIndicatorWidget(),
+                  // const Spacer(),
+                  AppTextButton(
+                    onPressed: () {
+                      final storeCubit = StoreCubit.get(context);
+                      storeCubit.saveCategory(
+                        SavingCategoryParams(
+                          nameAr: nameArController.text,
+                          nameEn: nameEnController.text,
+                          image: image!,
+                          categoryId: categoryIdController.text,
+                        ),
+                      );
+                    },
+                    title: "Save",
+                  ),
+                ],
+              ),
             ),
           );
         },
