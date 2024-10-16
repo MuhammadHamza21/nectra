@@ -28,6 +28,7 @@ import 'package:nectar/store/data/repository/store_repository.dart';
 import 'package:nectar/store/domain/repository/base_store_repository.dart';
 import 'package:nectar/store/domain/usecases/get_categories.dart';
 import 'package:nectar/store/domain/usecases/save_category.dart';
+import 'package:nectar/store/domain/usecases/save_item.dart';
 import 'package:nectar/store/presentation/controller/store_cubit.dart';
 import 'package:nectar/user/presentation/controller/user_cubit.dart';
 
@@ -89,6 +90,7 @@ class ServiceLocator {
         () => SignOutUsecase(baseAuthenticationRepository: sl()));
     sl.registerLazySingleton(
         () => SaveCategoryUsercase(baseStoreRepository: sl()));
+    sl.registerLazySingleton(() => SaveItemUsecase(baseStoreRepository: sl()));
     // external
     DioHelper.init();
     await CacheHelper.init();

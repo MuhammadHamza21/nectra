@@ -14,15 +14,19 @@ class OnBoardingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
+      body: SizedBox(
+        height: double.maxFinite,
+        width: double.maxFinite,
         child: Stack(
           alignment: AlignmentDirectional.bottomCenter,
           children: [
-            Image.asset(
-              "assets/images/on_boarding_image.png",
-              height: double.infinity,
-              width: double.infinity,
-              fit: BoxFit.fill,
+            Positioned(
+              right: -2,
+              bottom: -2,
+              child: Image.asset(
+                "assets/images/on_boarding_image.png",
+                fit: BoxFit.fill,
+              ),
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 30),

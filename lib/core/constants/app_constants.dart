@@ -5,4 +5,5 @@ class AppConstants {
   static const String onBoarding = "OnBoarding";
   static const String selectedLang = "SelectedLang";
   static const String theme = "Theme";
+  static const String categories = "categories";
 }
